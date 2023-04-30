@@ -1,4 +1,4 @@
-# Rat Snake
+# Cat Rat
 
 **Número da Lista**: .<br>
 **Conteúdo da Disciplina**: Grafos1<br>
@@ -10,7 +10,7 @@
 | 20/2017521  |  Algusto Rodrigues Caldas |
 
 ## Sobre 
-Jogo simples em que um rato usa um labirinto para fugir de uma cobra e chegar no seu objetivo, um queijo.
+Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
 (Descreva os objetivos do seu projeto e como ele funciona.) 
 
 ## Screenshots
