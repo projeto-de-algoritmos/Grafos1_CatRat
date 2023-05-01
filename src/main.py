@@ -1,22 +1,28 @@
 import pygame
 pygame.init()
-x = 300
-y = 400
-velocidade = 10
+
+#Configurações do labirinto
 fundo = pygame.image.load('maze.png')
+
+#Configurações do rato
+x = 0
+y = 0
+velocidade = 10
 rato = pygame.image.load('black-rat.png')
 
+#Configuração da janela do jogo
+pygame.display.set_caption("Catch Rat")
 janela = pygame.display.set_mode((862,561))
-pygame.display.set_caption("Criando um jogo com python")
-
 janela_aberta = True
+
 while janela_aberta:
     pygame.time.delay(50)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             janela_aberta = False
-
+    
+    #Controle de movimentação do rato
     comandos = pygame.key.get_pressed()
     if comandos [pygame.K_UP]:
         y-= velocidade
@@ -27,6 +33,7 @@ while janela_aberta:
     if comandos [pygame.K_LEFT]:
         x-= velocidade
 
+    #Desenho de cenário e personagens
     janela.blit(fundo, (0,0))
     janela.blit(rato, (x,y))
     
