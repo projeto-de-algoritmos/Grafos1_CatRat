@@ -2,6 +2,7 @@ import pygame
 from map import mapa
 import sys
 from collections import deque
+import random
 
 # Define as dimensões da janela
 WINDOW_WIDTH = 400
@@ -28,6 +29,9 @@ character = pygame.Rect(00, 160, 20, 20)
 
 # Cria o objeto do inimigo
 enemy = pygame.Rect(380, 360, 20, 20)
+
+GOAL_COLOR = (0, 255, 0) # verde
+goal = pygame.Rect(380, 380, 20, 20) # posição do objetivo
 
 # Criando o grafo
 graph = {}
@@ -144,12 +148,18 @@ while True:
     # Desenha o inimigo na tela
     pygame.draw.rect(screen, RED, enemy)
 
+    # Desenha o objetivo na tela
+    pygame.draw.rect(screen, GOAL_COLOR, goal)
+
     # Atualiza a tela
     pygame.display.update()
 
     # Define o nó atual do personagem
     current_node = (character.y // 20, character.x // 20)
     
+
+   
+
     # Espera por eventos do usuário
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -158,6 +168,10 @@ while True:
 
         # Verifica se uma tecla foi pressionada
         elif event.type == pygame.KEYDOWN:
+            if character.colliderect(goal):
+                print("Parabéns, você atingiu o objetivo!")
+                pygame.quit()
+                sys.exit()
             # Verifica a direção da tecla pressionada
             if event.key == pygame.K_UP:
                 next_node = (current_node[0] - 1, current_node[1])
