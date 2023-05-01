@@ -14,7 +14,11 @@ Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no s
 (Descreva os objetivos do seu projeto e como ele funciona.) 
 
 ## Screenshots
-(Adicione 3 ou mais screenshots do projeto em funcionamento.)
+<div align="center">
+	<img src="./assets/GameOverScreen.jpeg" alt="print">
+	<img src="./assets/GameScreen.jpeg" alt="print">
+	<img src="./assets/YouWinScreen.jpeg" alt="print">
+</div>
 
 ## Instalação 
 **Linguagem**: Python<br>
