@@ -1,6 +1,6 @@
 # Catch Rat
 
-**Número da Lista**: .<br>
+**Número da Lista**: 10<br>
 **Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
@@ -15,8 +15,13 @@ Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no s
 
 ## Screenshots
 <div align="center">
+	**Tela de Game Over**:
 	<img src="./assets/GameOverScreen.jpeg" alt="print">
+	
+	**Tela do jogo**:
 	<img src="./assets/GameScreen.jpeg" alt="print">
+	
+	**Tela de vitória **:
 	<img src="./assets/YouWinScreen.jpeg" alt="print">
 </div>
 
