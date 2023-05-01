@@ -12,6 +12,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 RED = (136, 8, 8)
+YELLOW = (212,175,55)
 
 # Define a velocidade dos personagens
 CHARACTER_SPEED = 20
@@ -28,6 +29,10 @@ character = pygame.Rect(00, 160, 20, 20)
 
 # Cria o objeto do inimigo
 enemy = pygame.Rect(380, 360, 20, 20)
+
+# Cria o objeto do troféu
+trophy = pygame.Rect(20, 160, 20, 20)
+#380, 220
 
 # Criando o grafo
 graph = {}
@@ -91,6 +96,17 @@ while True:
     # Desenha o mapa do labirinto na tela
     draw_graph(graph)
 
+    # Define o nó atual do troféu
+    trophy_node = (trophy.y // 20, trophy.x // 20)
+    
+    # Desenha o troféu na tela
+    pygame.draw.rect(screen, YELLOW, trophy)
+    
+    #Condição de vitória
+    if (character.y // 20, character.x // 20) == (trophy.y // 20, trophy.x // 20):
+        print("Você venceu!")
+        pygame.time.wait(5000)
+
     # Define o nó atual do inimigo
     enemy_node = (enemy.y // 20, enemy.x // 20)
 
@@ -101,6 +117,10 @@ while True:
     # Chama a função bfs para encontrar o caminho até o objetivo
     enemy_path = bfs(graph, enemy_start, enemy_goal)
 
+    #Condição de derrota
+    if (enemy.y // 20, enemy.x // 20) == (character.y // 20, character.x // 20):
+        print("Você perdeu!")
+        pygame.time.wait(5000)
 
 
     # Se o caminho foi encontrado, atualiza a posição do inimigo
