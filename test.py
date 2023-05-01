@@ -7,6 +7,10 @@ from collections import deque
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 400
 
+#declarações das imagens
+GameOver = pygame.image.load('GameOver.jpg')
+YouWin = pygame.image.load('Sucesso.jpg')
+
 # Define as cores
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -91,6 +95,7 @@ def bfs(graph, start, goal):
 # Define o nó objetivo para o inimigo
 enemy_goal = (character.y // 20, character.x // 20)
 
+
 # Loop principal do jogo
 while True:
     # Desenha o mapa do labirinto na tela
@@ -105,6 +110,7 @@ while True:
     #Condição de vitória
     if (character.y // 20, character.x // 20) == (trophy.y // 20, trophy.x // 20):
         print("Você venceu!")
+        screen.blit(YouWin, (0,0))
         pygame.time.wait(5000)
 
     # Define o nó atual do inimigo
@@ -120,6 +126,7 @@ while True:
     #Condição de derrota
     if (enemy.y // 20, enemy.x // 20) == (character.y // 20, character.x // 20):
         print("Você perdeu!")
+        screen.blit(GameOver, (0,0))
         pygame.time.wait(5000)
 
 
