@@ -1,6 +1,7 @@
 import pygame
 from map import mapa
 import sys
+from collections import deque
 
 # Define as dimensões da janela
 WINDOW_WIDTH = 400
@@ -12,8 +13,9 @@ WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 RED = (136, 8, 8)
 
-# Define a velocidade do personagem
+# Define a velocidade dos personagens
 CHARACTER_SPEED = 20
+ENEMY_SPEED = 10
 
 # Inicializa o Pygame
 pygame.init()
@@ -51,12 +53,90 @@ def draw_graph(graph):
         for neighbor in neighbors:
             pygame.draw.line(screen, WHITE, (node[1]*20+10, node[0]*20+10), (neighbor[1]*20+10, neighbor[0]*20+10))
 
+# Função que implementa o algoritmo BFS
+def bfs(graph, start, goal):
+    # Inicializa a fila com o nó inicial
+    queue = [start]
+    # Inicializa o dicionário de predecessores
+    predecessor = {start: None}
+    
+    # Loop principal do algoritmo BFS
+    while queue:
+        # Remove o nó mais antigo da fila
+        current_node = queue.pop(0)
+        
+        # Verifica se o nó atual é o objetivo
+        if current_node == goal:
+            # Se for, monta o caminho e retorna
+            path = [current_node]
+            while predecessor[current_node]:
+                current_node = predecessor[current_node]
+                path.append(current_node)
+            return path[::-1]
+        
+        # Adiciona os vizinhos não visitados do nó atual na fila
+        for neighbor in graph[current_node]:
+            if neighbor not in predecessor:
+                predecessor[neighbor] = current_node
+                queue.append(neighbor)
+    
+    # Se o objetivo não foi encontrado, retorna None
+    return None
 
+# Define o nó objetivo para o inimigo
+enemy_goal = (character.y // 20, character.x // 20)
 
 # Loop principal do jogo
 while True:
     # Desenha o mapa do labirinto na tela
     draw_graph(graph)
+
+    # Define o nó atual do inimigo
+    enemy_node = (enemy.y // 20, enemy.x // 20)
+
+    # Define o nó inicial e o nó objetivo para o inimigo
+    enemy_start = (enemy.y // 20, enemy.x // 20)
+    enemy_goal = (character.y // 20, character.x // 20)
+    
+    # Chama a função bfs para encontrar o caminho até o objetivo
+    enemy_path = bfs(graph, enemy_start, enemy_goal)
+
+
+
+    # Se o caminho foi encontrado, atualiza a posição do inimigo
+    if len(enemy_path) >= 2:
+        next_node = enemy_path[1]
+    else:
+        next_node = None
+
+    if next_node:
+        if next_node[0] < enemy_start[0]:
+            enemy.move_ip(0, -CHARACTER_SPEED)
+        elif next_node[0] > enemy_start[0]:
+            enemy.move_ip(0, CHARACTER_SPEED)
+        elif next_node[1] < enemy_start[1]:
+            enemy.move_ip(-CHARACTER_SPEED, 0)
+        elif next_node[1] > enemy_start[1]:
+            enemy.move_ip(CHARACTER_SPEED, 0)
+        enemy_start = next_node
+
+    # Encontra o caminho mais curto do inimigo até o personagem
+    path = bfs(graph, enemy_node, (character.y // 20, character.x // 20))
+
+    # Move o inimigo em direção ao próximo nó do caminho
+    if path:
+        next_node = path[0]
+        if next_node[1] < enemy_node[1]:
+            enemy.move_ip(-ENEMY_SPEED, 0)
+        elif next_node[1] > enemy_node[1]:
+            enemy.move_ip(ENEMY_SPEED, 0)
+        elif next_node[0] < enemy_node[0]:
+            enemy.move_ip(0, -ENEMY_SPEED)
+        elif next_node[0] > enemy_node[0]:
+            enemy.move_ip(0, ENEMY_SPEED)
+        enemy_node = (enemy.y // 20, enemy.x // 20)
+
+    pygame.time.wait(500)
 
     # Desenha o personagem na tela
     pygame.draw.rect(screen, BLUE, character)
@@ -99,13 +179,3 @@ while True:
                 if next_node in graph[current_node]:
                     character.move_ip(CHARACTER_SPEED, 0)
                     current_node = next_node
-
-            # Atualiza a posição do inimigo em relação à posição atual do jogador
-            if character.x < enemy.x:
-                enemy.move_ip(-CHARACTER_SPEED, 0)
-            elif character.x > enemy.x:
-                enemy.move_ip(CHARACTER_SPEED, 0)
-            if character.y < enemy.y:
-                enemy.move_ip(0, -CHARACTER_SPEED)
-            elif character.y > enemy.y:
-                enemy.move_ip(0, CHARACTER_SPEED)
