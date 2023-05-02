@@ -15,6 +15,7 @@ Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no s
 
 ## Screenshots
 
+<div align="center">**Linguagem**:</div>
 <div align="center">
         <**Gay** img src="./assets/GameOverScreen.jpeg" alt="print"></div>
         <img src="./assets/GameScreen.jpeg" alt="print"></div>
