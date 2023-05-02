@@ -13,10 +13,12 @@
 Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
 
 ## Screenshots
+**Tela de derrota\n**
+<img src="./assets/GameOverScreen.jpeg" alt="print">
 
-<img src="./assets/GameOverScreen.jpeg" alt="print" title="Tela de derrota">
 **Tela do jogo**
 <img src="./assets/GameScreen.jpeg" alt="print">
+
 **Tela de vitória**
 <img src="./assets/YouWinScreen.jpeg" alt="print">
 
