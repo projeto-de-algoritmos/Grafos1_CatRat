@@ -11,13 +11,10 @@
 
 ## Sobre 
 Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
-(Descreva os objetivos do seu projeto e como ele funciona.) 
 
 ## Screenshots
 
-Linguagem
 <div align="center">
-        <**Linguagem**:>
         <img src="./assets/GameOverScreen.jpeg" alt="print">
         <img src="./assets/GameScreen.jpeg" alt="print">
         <img src="./assets/YouWinScreen.jpeg" alt="print">
@@ -25,15 +22,11 @@ Linguagem
 
 ## Instalação 
 **Linguagem**: Python<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Framework**: Pygame<br>
+Necessário ter uma versão atualizada da linguagem Python (Preferência 3.10) e, além disso, instalar o Pygame (pip install pygame). 
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+O jogo é controlado pelas setas do teclado. Não há movimentação continua, sendo assim, é necessário clicar multiplas vezes para que seja possível movimentar o personagem através do mapa.
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Existem condições de vitória e derrota. O jogador vence quando alcanca o nó dourado e perde caso o nó vermelho (inimigo) o alcance. Em ambos os casos, o jogo se encerra automaticamente. 
