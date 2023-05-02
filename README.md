@@ -1,6 +1,6 @@
 # Catch Rat
 
-**Número da Lista**: .<br>
+**Número da Lista**: 10<br>
 **Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
@@ -11,22 +11,28 @@
 
 ## Sobre 
 Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
-(Descreva os objetivos do seu projeto e como ele funciona.) 
 
 ## Screenshots
-(Adicione 3 ou mais screenshots do projeto em funcionamento.)
+<center>Tela de derrota</center>
+
+![Tela de derrota](./assets/GameOverScreen.jpeg)
+
+<center>Tela de jogo</center>
+
+![Tela de jogo](./assets/GameScreen.jpeg)
+
+<center>Tela de vitória</center>
+
+![Tela de vitória](./assets/YouWinScreen.jpeg)
+
 
 ## Instalação 
 **Linguagem**: Python<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Framework**: Pygame<br>
+Necessário ter uma versão atualizada da linguagem Python (Preferência 3.10) e, além disso, instalar o Pygame (pip install pygame). 
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+O jogo é controlado pelas setas do teclado. Não há movimentação continua, sendo assim, é necessário clicar multiplas vezes para que seja possível movimentar o personagem através do mapa.
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Existem condições de vitória e derrota. O jogador vence quando alcanca o nó dourado e perde caso o nó vermelho (inimigo) o alcance. Em ambos os casos, o jogo se encerra automaticamente. 
