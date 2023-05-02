@@ -13,17 +13,15 @@
 Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
 
 ## Screenshots
+<center>Tela de derrota</center>
 ![Tela de derrota](./assets/GameOverScreen.jpeg)
 
-<center>Tela de derrota</center>
-
+<center>Tela de jogo</center>
 ![Tela de jogo](./assets/GameScreen.jpeg)
 
-<center>Tela de jogo</center>
-
+<center>Tela de vitória</center>
 ![Tela de vitória](./assets/YouWinScreen.jpeg)
 
-<center>Tela de vitória</center>
 
 ## Instalação 
 **Linguagem**: Python<br>
