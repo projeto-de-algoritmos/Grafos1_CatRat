@@ -2,6 +2,9 @@ import pygame
 from map import mapa
 import sys
 from collections import deque
+from collections import defaultdict
+from heapq import *
+from unionfind import UnionFind
 
 # Define as dimensões da janela
 WINDOW_WIDTH = 400
@@ -62,35 +65,55 @@ def draw_graph(graph):
         for neighbor in neighbors:
             pygame.draw.line(screen, WHITE, (node[1]*20+10, node[0]*20+10), (neighbor[1]*20+10, neighbor[0]*20+10))
 
-# Função que implementa o algoritmo BFS
-def bfs(graph, start, goal):
-    # Inicializa a fila com o nó inicial
-    queue = [start]
-    # Inicializa o dicionário de predecessores
-    predecessor = {start: None}
-    
-    # Loop principal do algoritmo BFS
+# Função que implementa o algoritmo de Kruskal
+def kruskal(self, start, end):
+    # Inicializa a lista de arestas e o conjunto de vértices
+    edges = [(w, u, v) for u in self.graph for v, w in self.graph[u].items()]
+    vertices = set(self.graph.keys())
+
+    # Inicializa a estrutura de Union-Find
+    uf = UnionFind(vertices)
+
+    # Ordena as arestas pelo peso (menor para o maior)
+    edges.sort()
+
+    # Adiciona as arestas uma a uma até que o caminho seja encontrado
+    for weight, u, v in edges:
+        if uf[u] != uf[v]:
+            uf.union(u, v)
+            self.path[u].append(v)
+            self.path[v].append(u)
+        if uf[start] == uf[end]:
+            break
+
+def find_shortest_path(self, start, end):
+    # Inicializa o caminho mais curto
+    self.path = defaultdict(list)
+
+    # Chama o algoritmo de Kruskal para encontrar o caminho mais curto
+    self.kruskal(start, end)
+
+    # Inicializa a lista de vértices visitados e adiciona o nó inicial
+    visited = set()
+    visited.add(start)
+
+    # Inicializa a fila de nós a serem visitados e adiciona o nó inicial
+    queue = [(start, [])]
+
+    # Enquanto houver nós na fila
     while queue:
-        # Remove o nó mais antigo da fila
-        current_node = queue.pop(0)
-        
-        # Verifica se o nó atual é o objetivo
-        if current_node == goal:
-            # Se for, monta o caminho e retorna
-            path = [current_node]
-            while predecessor[current_node]:
-                current_node = predecessor[current_node]
-                path.append(current_node)
-            return path[::-1]
-        
-        # Adiciona os vizinhos não visitados do nó atual na fila
-        for neighbor in graph[current_node]:
-            if neighbor not in predecessor:
-                predecessor[neighbor] = current_node
-                queue.append(neighbor)
-    
-    # Se o objetivo não foi encontrado, retorna None
-    return None
+        # Remove o primeiro nó da fila
+        node, path = queue.pop(0)
+
+        # Verifica se o nó é o nó final
+        if node == end:
+            return path + [node]
+
+        # Adiciona os vizinhos do nó à fila
+        for neighbor in self.path[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, path + [node]))
 
 # Define o nó objetivo para o inimigo
 enemy_goal = (character.y // 20, character.x // 20)
@@ -123,8 +146,8 @@ while True:
     enemy_start = (enemy.y // 20, enemy.x // 20)
     enemy_goal = (character.y // 20, character.x // 20)
     
-    # Chama a função bfs para encontrar o caminho até o objetivo
-    enemy_path = bfs(graph, enemy_start, enemy_goal)
+    # Chama a função find_shortest_path para encontrar o caminho até o objetivo
+    enemy_path = find_shortest_path(graph, enemy_start, enemy_goal)
 
     #Condição de derrota
     if (enemy.y // 20, enemy.x // 20) == (character.y // 20, character.x // 20):
@@ -153,7 +176,7 @@ while True:
         enemy_start = next_node
 
     # Encontra o caminho mais curto do inimigo até o personagem
-    path = bfs(graph, enemy_node, (character.y // 20, character.x // 20))
+    path = find_shortest_path(graph, enemy_node, (character.y // 20, character.x // 20))
 
     # Move o inimigo em direção ao próximo nó do caminho
     if path:
