@@ -1,7 +1,7 @@
 # Catch Rat
 
 **Número da Lista**: 10<br>
-**Conteúdo da Disciplina**: Grafos1<br>
+**Conteúdo da Disciplina**: Grafos2<br>
 
 ## Alunos
 |Matrícula | Aluno |
@@ -10,29 +10,29 @@
 | 20/2017521  |  Algusto Rodrigues Caldas |
 
 ## Sobre 
-Jogo simples em que um rato usa um labirinto para fugir de um gato e chegar no seu objetivo, um queijo.
+Gerador de labirintos aleatórios.
 
 ## Screenshots
-<center>Tela de derrota</center>
+<center>Labirinto 1</center>
 
-![Tela de derrota](./assets/GameOverScreen.jpeg)
+![Labirinto 1](./assets/GameOverScreen.jpeg)
 
-<center>Tela de jogo</center>
+<center>Labirinto 2</center>
 
-![Tela de jogo](./assets/GameScreen.jpeg)
+![Labirinto 2](./assets/GameScreen.jpeg)
 
-<center>Tela de vitória</center>
+<center>Labirinto 3</center>
 
-![Tela de vitória](./assets/YouWinScreen.jpeg)
+![Labirinto 3](./assets/YouWinScreen.jpeg)
 
 
 ## Instalação 
 **Linguagem**: Python<br>
-**Framework**: Pygame<br>
-Necessário ter uma versão atualizada da linguagem Python (Preferência 3.10) e, além disso, instalar o Pygame (pip install pygame). 
+**Framework**: Pygame e Numpy<br>
+Necessário ter uma versão atualizada da linguagem Python (Preferência 3.10) e, além disso, instalar o framework Pygame e Numpy (Use o comando: pip install). 
 
 ## Uso 
-O jogo é controlado pelas setas do teclado. Não há movimentação continua, sendo assim, é necessário clicar multiplas vezes para que seja possível movimentar o personagem através do mapa.
+Basta dar run no código para que seja possível gerar um novo mapa aleatório.
 
 ## Outros 
-Existem condições de vitória e derrota. O jogador vence quando alcanca o nó dourado e perde caso o nó vermelho (inimigo) o alcance. Em ambos os casos, o jogo se encerra automaticamente. 
+None
