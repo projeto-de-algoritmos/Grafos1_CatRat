@@ -15,15 +15,15 @@ Gerador de labirintos aleatórios.
 ## Screenshots
 <center>Labirinto 1</center>
 
-![Labirinto 1](./assets/GameOverScreen.jpeg)
+![Labirinto 1](./assets/lab1.jpeg)
 
 <center>Labirinto 2</center>
 
-![Labirinto 2](./assets/GameScreen.jpeg)
+![Labirinto 2](./assets/lab2.jpeg)
 
 <center>Labirinto 3</center>
 
-![Labirinto 3](./assets/YouWinScreen.jpeg)
+![Labirinto 3](./assets/lab3.jpeg)
 
 
 ## Instalação 
