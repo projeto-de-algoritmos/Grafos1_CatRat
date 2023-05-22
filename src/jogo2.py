@@ -3,8 +3,8 @@ import random
 import numpy as np
 
 # Define as constantes do tamanho do mapa
-WIDTH = 800
-HEIGHT = 800
+WIDTH = 600
+HEIGHT = 600
 ROWS = 20
 COLS = 20
 CELL_SIZE = WIDTH // ROWS
